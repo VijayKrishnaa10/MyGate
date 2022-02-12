@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Flat Owner Create" icon-name="standard:client">
+        <div class="slds-var-m-around_medium">
+            <template if:true={associationDetails}>
+                <div class="slds-var-m-bottom_medium slds-var-m-top_medium">
+                    <p class = "slds-align--absolute-center slds-p-around--x-small" style="background-color:burlywood;">Your Assocication Details</p>
+                </div>
+                <lightning-record-form object-api-name={flatAssociationObject} fields={fields} onsuccess={handleSuccess}
+                    onsubmit={handleSubmit} columns="2">
+                </lightning-record-form>
+            </template>
+            <template if:false={associationDetails}>
+                <div class="slds-align--absolute-center">
+                    <lightning-file-upload label="Attach receipt" name="fileUploader" accept={acceptedFormats} record-id={currentRecordId}
+                    onuploadfinished={handleUploadFinished} multiple>
+                </lightning-file-upload>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+
+</template>

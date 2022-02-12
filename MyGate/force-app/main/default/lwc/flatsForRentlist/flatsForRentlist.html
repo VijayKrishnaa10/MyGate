@@ -1,0 +1,57 @@
+<template>
+    <div>
+    <lightning-card>
+        <article class="slds-card" style="background-color: #E1E1E1;">
+            <div class="slds-grid slds-wrap slds-var-m-left_xx-large">
+                <template for:each={flatRental} for:item="rental" for:index="index">
+                    <div key={rental.Id} data-rec-id={rental.Id}  class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-size_1-of-12 slds-var-m-around_medium" 
+                            style="text-align: center; background-color: white;">
+                        <!-- <template if:false={imageDisplay}>
+                            <p class="slds-box">
+                                <lightning-icon icon-name="action:remove" alternative-text="Approved" title="Approved"></lightning-icon>
+                                <strong>No Image Found</strong>
+                            </p>
+                        </template>
+                        <template if:true={imageDisplay}>
+                            <img src={picture1} alt="Profile photo" />
+                        </template> -->
+                        <div class="slds-box">
+                            <p><lightning-icon icon-name="standard:household" alternative-text="Approved" title="Approved"></lightning-icon></p>
+                            <p><strong>House for Rent</strong></p>
+                        </div>
+                        <p class="slds-var-m-bottom_xx-small slds-var-m-top_small">Name : {rental.Name}</p>
+                        <p class="slds-var-m-bottom_xx-small">Flat Number: {rental.Flat_Number__c}</p>
+                        <p class="slds-var-m-bottom_xx-small">
+                           Phone: <lightning-formatted-phone value={rental.Phone_Number__c}></lightning-formatted-phone>
+                        </p>
+                        <p class="slds-var-m-bottom_medium">
+                            <lightning-button label="More Details" data-rec-id={rental.Id} icon-name="utility:image" icon-position="right" onclick={handleImagePreview}>
+                            </lightning-button>
+                        </p>
+                    </div>
+                </template>
+            </div>
+        </article>
+    </lightning-card>
+    
+</div>
+    <!-- <template for:each={flatMembers} for:item="members">
+        <div key={members.id} class="slds-col slds-size_2-of-12 slds-var-m-around_medium">
+            <lightning-card title={members.Name}  icon-name="standard:client">
+                <lightning-layout class="slds-align--absolute-center">
+                    <lightning-layout-item>
+                        <img src={members.Image__c} alt="Profile photo" />
+                        <p>Name : {members.Name}</p>
+                        <p>Flat Number: {members.Flat_Number__c}</p>
+                        <p>
+                            <lightning-formatted-phone value={members.Phone_Number__c}></lightning-formatted-phone>
+                        </p>
+                        <p>
+                            <lightning-formatted-email value={members.Email__c}></lightning-formatted-email>
+                        </p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-card>
+        </div>
+    </template> -->
+</template>

@@ -1,0 +1,35 @@
+<template>
+    <template if:true={flatMembers}>
+        <div>
+            <lightning-input
+            type="search"
+            onchange={handleKeyChange}
+            class="slds-var-m-bottom_small"
+            label="Search"
+            value={searchKey}
+        ></lightning-input>
+        </div>
+        <div class="slds-grid slds-wrap" style="margin-left: 3rem;">
+           
+            <template for:each={flatMembers} for:item="members">
+                <div key={members.id} class="slds-col slds-size_2-of-12 slds-var-m-around_medium">
+                    <lightning-card title={members.Name}  icon-name="standard:client">
+                        <lightning-layout class="slds-align--absolute-center">
+                            <lightning-layout-item>
+                                <img src={members.Image__c} alt="Profile photo" />
+                                <p>Name : {members.Name}</p>
+                                <p>Flat Number: {members.Flat_Number__c}</p>
+                                <p>
+                                    <lightning-formatted-phone value={members.Phone_Number__c}></lightning-formatted-phone>
+                                </p>
+                                <p>
+                                    <lightning-formatted-email value={members.Email__c}></lightning-formatted-email>
+                                </p>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,11 @@
+.img-info{
+    width: 250px !important;
+    height: 100px !important;
+    border: 3px solid white;
+}
+
+.img-preview-info{
+    width: 480px !important;
+    height: 260px !important;
+    border: 5px solid white;
+}

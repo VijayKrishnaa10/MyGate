@@ -1,0 +1,66 @@
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning-button-icon class="slds-modal__close" title="Close" icon-name="utility:close"
+                        icon-class="slds-button_icon-inverse" onclick={handleDialogClose}></lightning-button-icon>
+
+                    <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+                        Add Staff Details
+                    </h2>
+
+                    <p class="slds-m-top_x-small modal-hidden">
+                        <slot name="tagline" onslotchange={handleSlotTaglineChange}></slot>
+                    </p>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap" id="modal-content-id-1">
+                    <!-- <div class="slds-col slds-size_4-of-12 slds-var-m-around_medium">
+                    <label class="slds-form-element__label" for="text-input-id-1">
+                        <lightning-icon icon-name="standard:text" alternative-text="Vehicles"></lightning-icon> <abbr class="slds-required" title="required">* </abbr> <strong>Vehicle Name</strong></label>
+                      <div class="slds-form-element__control">
+                        <input type="text" id="text-input-id-1" placeholder="Placeholder text…" required="" aria-describedby="error-message-unique-id" class="slds-input" aria-invalid="true" 
+                        value={VehicleRec.vechicleColor} onkeypress={handleVehicleColorChange}/>
+                      </div>
+                    </div> 
+                    <div class="slds-col slds-size_4-of-12 slds-var-m-around_medium">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <lightning-icon icon-name="standard:text" alternative-text="Vehicles"></lightning-icon> <abbr class="slds-required" title="required">* </abbr><strong>Vehicle Color</strong></label>
+                          <div class="slds-form-element__control">
+                            <input type="text" id="text-input-id-2" placeholder="Placeholder text…" required="" aria-describedby="error-message-unique-id" class="slds-input" aria-invalid="true" 
+                            value={VehicleRec.vechicleColor} onkeypress={handleVehicleColorChange}/>
+                          </div>
+                    </div>
+                    <div class="slds-col slds-size_4-of-12 slds-var-m-around_medium">
+                        <label class="slds-form-element__label" for="text-input-id-1">
+                            <lightning-icon icon-name="standard:text" alternative-text="Vehicles"></lightning-icon> <abbr class="slds-required" title="required">* </abbr><strong>Vehicle Number</strong></label>
+                          <div class="slds-form-element__control">
+                            <input type="text" id="text-input-id-3" placeholder="Placeholder text…" required="" aria-describedby="error-message-unique-id" class="slds-input" aria-invalid="true" 
+                            value={VehicleRec.vechicleNumber} onkeypress={handleVehicleNumberchange}/>
+                          </div>
+                    </div> -->
+
+                    <div class="slds-col slds-size--5-of-12 slds-var-m-around_medium">
+                        <lightning-input type="text" label="Staff Name" value={staffRec.name} 
+                           placeholder="Name..." onchange={handleStaffNameChange} required></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size--5-of-12 slds-var-m-around_medium">
+                        <lightning-input type="datetime" label="Entry Time" value={staffRec.Entry_time__c} 
+                         onchange={handleStaffEntrychange} required></lightning-input>
+                    </div> 
+                     
+                    <!-- <lightning-input type="text" label="Vehicle Color" value={VehicleRec.vechicleColor} onchange={handleVehicleColorChange}></lightning-input>
+                    <lightning-input type="number" label="Vehicle Number" value={VehicleRec.vechicleNumber} onchange={handleVehicleNumberchange}></lightning-input><br/> -->
+                </div>
+
+                <footer class="slds-modal__footer modal-hidden">
+                    <slot name="footer" onslotchange={handleSlotFooterChange}></slot>
+                    <lightning-button label="Cancel" onclick={handleCancelModal}></lightning-button>
+                    <lightning-button label="Save" onclick={handleSaveClick}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

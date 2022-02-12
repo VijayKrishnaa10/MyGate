@@ -1,0 +1,171 @@
+<template>
+        <lightning-card title="Details" icon-name="standard:client">
+            <template if:true={addtionalList}>
+                <template for:each={addtionalList} for:item="addList">
+                    <div key={addList.Id}>
+                        <lightning-layout class="slds-align--absolute-center slds-tree__group-header slds-expression__group">
+                            <lightning-layout-item >
+                                <img src={addList.Image__c} alt="Profile photo" />
+                                <p>Name : {addList.Name}</p>
+                                <p>Flat Number: {addList.Flat_Number__c}</p>
+                                <p>
+                                    <lightning-formatted-phone value={addList.Phone_Number__c}></lightning-formatted-phone>
+                                </p>
+                                <p>
+                                    <lightning-formatted-email value={addList.Email__c}></lightning-formatted-email>
+                                </p>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <lightning-layout>
+                            <lightning-layout-item class="slds-box slds-var-m-around_small itemBackground">
+                                <p class="slds-var-m-bottom_small">
+                                    <lightning-icon icon-name="custom:custom20" alternative-text="Family"></lightning-icon> <strong class="slds-var-m-left_small">Family</strong>
+                                 </p>
+                                <template for:each={addList.Families__r} for:item="family">
+                                    <div key={family.id} class="slds-box slds-var-m-bottom_x-small" style="background-color: white;">
+                                        <!-- <p> Family Members</p> -->
+                                        
+                                        <p>Name : {family.Name}</p>
+                                        <p>Total Members: {family.Total_Members_In_Home__c}</p>
+                                        
+                                    </div>                                    
+                                </template>
+                                <p>
+                                    <lightning-button
+                                    label="Family"
+                                    icon-name="utility:add"
+                                    icon-position="right"
+                                    onclick={handleFamily}
+                                    ></lightning-button>
+                                    <!-- onrefresh={handleApexRefresh} -->
+                                    <c-family-create-modal recid={recordId} ></c-family-create-modal>
+                                </p>
+                            </lightning-layout-item>
+                            <lightning-layout-item class="slds-box slds-var-m-around_small itemBackground" >
+                                <p class="slds-var-m-bottom_small">
+                                    <lightning-icon icon-name="custom:custom80" alternative-text="Vehicles"></lightning-icon> <strong class="slds-var-m-left_small">Vehicles</strong>
+                                </p>
+                                <template for:each={addList.Vehicles__r} for:item="vechicle">
+                                    <div key={vechicle.id} class="slds-box slds-var-m-bottom_x-small" style="background-color: white;">
+                                        <!-- <p> Vechicles</p> -->
+                                        
+                                        <p>Name : {vechicle.Name}</p>
+                                        <p>Color: {vechicle.Color__c}</p>                                        
+                                    </div> 
+                                </template>
+                                <p>
+                                    <lightning-button
+                                    label="Vehicle"
+                                    icon-name="utility:add"
+                                    icon-position="right"
+                                    onclick={handleVechicles}
+                                    ></lightning-button>
+                                    <c-vechicle-create-modal recid={recordId}></c-vechicle-create-modal>
+                                </p>
+                                
+                            </lightning-layout-item>
+                            <lightning-layout-item class="slds-box slds-var-m-around_small itemBackground" >
+                                <!-- <p>Household staffs</p> -->
+                                <p class="slds-var-m-bottom_small">
+                                    <lightning-icon icon-name="standard:service_crew" alternative-text="Household staffs"></lightning-icon> <strong class="slds-var-m-left_small">Household staffs</strong>
+                                </p>
+                                <template for:each={addList.Household_staffs__r} for:item="staffs">
+                                    <div key={staffs.id} class="slds-box slds-var-m-bottom_x-small" style="background-color: white;">       
+                                       
+                                        <p>Name : {staffs.Name}</p>
+                                        
+                                    </div> 
+                                </template>
+                                <p>
+                                    <lightning-button
+                                    label="Staffs"
+                                    icon-name="utility:add"
+                                    icon-position="right"
+                                    onclick={handleStaff}
+                                    ></lightning-button>
+                                    <c-household-staffs-create-modal recid={recordId}></c-household-staffs-create-modal>
+                                </p>
+                            </lightning-layout-item>
+                            <lightning-layout-item class="slds-box slds-var-m-around_small itemBackground" >
+                                <p class="slds-var-m-bottom_small">
+                                    <lightning-icon icon-name="custom:custom75" alternative-text="Intercoms"></lightning-icon> <strong class="slds-var-m-left_small">Intercoms</strong>
+                                </p>
+                                <template for:each={addList.Intercoms__r} for:item="intercoms">
+                                    <div key={intercoms.id} class="slds-box slds-var-m-bottom_x-small" style="background-color: white;">
+                                        <!-- <p >Intercoms</p> -->
+                                       
+                                        <p>Name : {intercoms.Name}</p>
+                                        <p>Intercom Number : {intercoms.Intercom_Number__c}</p>
+                                        <p>Alternate Phone : {intercoms.Alternate_Phone__c}</p>
+                                        
+                                    </div> 
+                                </template>
+                                <p >
+                                    <lightning-button
+                                    label="Intercoms"
+                                    icon-name="utility:add"
+                                    icon-position="right"
+                                    onclick={handleIntercom}
+                                    ></lightning-button>
+                                </p>
+                                <c-intercom-create-modal recid={recordId}></c-intercom-create-modal>
+                            </lightning-layout-item>
+                        </lightning-layout>    
+                        <!-- <lightning-layout>
+                            
+                                <div>
+                                    <lightning-checkbox-group name="Checkbox Group"
+                                label="For Rent"
+                                options={options}
+                                value={value}
+                                onchange={handleRentalChange}
+                                required></lightning-checkbox-group>
+                                <p>
+                                    <lightning-button
+                                    label="Save Rental"
+                                    icon-name="utility:check"
+                                    icon-position="right"
+                                    onclick={handlerental}
+                                    ></lightning-button>
+                                </p>
+                                </div>
+                        </lightning-layout>                     -->
+                        <lightning-layout class="slds-tree__group-header slds-expression__group">
+                            <template if:true={imageDisplay}>
+                                <lightning-layout-item >
+                                    <lightning-checkbox-group name="Checkbox Group"
+                                    options={options}
+                                    value={value}
+                                    onchange={handleChange}
+                                    ></lightning-checkbox-group>
+                                </lightning-layout-item>
+                                <lightning-layout-item>
+                                    <div>
+                                        <lightning-button
+                                        label="Save Rental"
+                                        icon-name="utility:check"
+                                        icon-position="right"
+                                        onclick={handlerental}
+                                        ></lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                             <template if:false={imageDisplay}>
+                            <lightning-layout-item>
+                                <div class="slds-align--absolute-center slds-var-m-around_medium slds-tree__group-header">
+                                    <p>Please add Images of your House</p>
+                                </div>
+                                <div class="slds-align--absolute-center">
+                                    <lightning-file-upload label="Attach Images" name="fileUploader" accept={acceptedFormats} record-id={recordId}
+                                    onuploadfinished={handleUploadFinished} multiple>
+                                </lightning-file-upload>
+                                </div>
+                            </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </div>
+                </template>
+                
+            </template>            
+        </lightning-card>
+</template>

@@ -1,0 +1,23 @@
+<template>
+    <div>
+        <template if:true={imageDisplay}>
+            <lightning-card>
+                <article class="slds-card" style="background-color: #E1E1E1;">
+                    <div class="slds-align--absolute-center">
+                        <img class="img-preview-info" src={previewImage} alt="Profile photo" />
+                    </div>
+                    <div class="slds-grid slds-wrap slds-var-m-left_xx-large">
+                        <template for:each={filesList} for:item="files" for:index="index">
+                            <div key={files.Id} data-factor={files.Id}
+                                class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-size_1-of-12 slds-var-m-around_medium"
+                                style="text-align: center; background-color: white;">
+                                <a onclick={imageClick} data-factor={files.Id}> <img class="img-info" src={files.url} data-factor={files.Id}
+                                        alt="Profile photo" /></a>
+                            </div>
+                        </template>
+                    </div>
+                </article>
+            </lightning-card>
+        </template>
+    </div>
+</template>

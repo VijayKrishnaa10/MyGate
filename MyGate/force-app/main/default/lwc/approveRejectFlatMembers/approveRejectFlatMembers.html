@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <p >
+            <lightning-button
+            class="slds-var-m-around_medium"
+            label="Reject"
+            icon-name="utility:ban"
+            icon-position="right"
+            onclick={handleRejection}
+            ></lightning-button>
+            <lightning-button
+            label="Approve"
+            icon-name="utility:check"
+            icon-position="right"
+            onclick={handleApproval}
+            ></lightning-button>
+        </p>
+    
+    </div>
+    <div class="slds-var-m-around_small">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}>
+        </lightning-datatable>
+    </div>  
+</template>

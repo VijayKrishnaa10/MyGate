@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Flat Owner Create" icon-name="standard:client">
+        <div class="slds-var-m-around_medium">
+            <!-- <lightning-progress-bar value={progress} size="large"></lightning-progress-bar> -->
+              <lightning-progress-indicator current-step={progress} type="base"  variant="base">
+                    <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
+                    <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
+                    <lightning-progress-step label="Step 3" value="3"></lightning-progress-step>
+                </lightning-progress-indicator>
+            <div class="slds-var-m-top_medium">
+                <template if:true={ownerDetails}>
+                    <div class="slds-var-m-bottom_medium slds-var-m-top_medium">
+                        <p class = "slds-align--absolute-center slds-p-around--x-small" style="background-color:burlywood;">Your Details</p>
+                    </div>
+                    <lightning-record-form object-api-name={flatOwnerObject} fields={fields} onsuccess={handleSuccess} onsubmit={handleSubmit} columns="2">
+                    </lightning-record-form>
+                </template>
+                <template if:false={ownerDetails}>
+                    <div class="slds-var-m-bottom_medium slds-var-m-top_medium">
+                        <p class = "slds-align--absolute-center slds-p-around--x-small" style="background-color:burlywood;">Additional Details</p>
+                    </div>
+                    <lightning-radio-group name="radioGroup" label="You are a" options={options} value={value} type="radio" required>
+                    </lightning-radio-group>
+                    <div class="slds-var-m-top_large">
+                        <lightning-checkbox-group name="Checkbox Group" label="Submit for Approval" options={checkBoxoptions} value={value}
+                            onchange={handleChange}></lightning-checkbox-group>
+                    </div>
+                    <p >
+                        <lightning-button
+                        label="Save"
+                        icon-name="utility:send"
+                        icon-position="right"
+                        onclick={handleApproval}
+                        ></lightning-button>
+                    </p>
+                </template>
+
+            </div>
+        </div>
+    </lightning-card>
+
+</template>

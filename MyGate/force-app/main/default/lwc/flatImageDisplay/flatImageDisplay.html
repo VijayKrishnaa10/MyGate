@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Flat Owner Create" icon-name="standard:client">
+        <template if:true={imageDisplay}>
+            <lightning-carousel>
+                <lightning-carousel-image src={picture1} header="Residencies"
+                    description="Welcomes You!!" alternative-text="This is a card" href="https://www.example.com">
+                </lightning-carousel-image>
+                <lightning-carousel-image src={picture2} header="Residencies"
+                    description="Welcomes You!!" alternative-text="This is a card" href="https://www.example.com">
+                </lightning-carousel-image>
+                <lightning-carousel-image src={picture3} header="Residencies"
+                    description="Welcomes You!!" alternative-text="This is a card" href="https://www.example.com">
+                </lightning-carousel-image>
+            </lightning-carousel>
+        </template>
+        <template if:false={imageDisplay}>
+            <div class="slds-align--absolute-center slds-var-m-around_medium slds-tree__group-header">
+                <p>Please add Images of your Apartments</p>
+            </div>
+            <div class="slds-align--absolute-center">
+                <lightning-file-upload label="Attach Images" name="fileUploader" accept={acceptedFormats} record-id={recordId}
+                onuploadfinished={handleUploadFinished} multiple>
+            </lightning-file-upload>
+            </div>
+        </template>
+    </lightning-card>
+</template>

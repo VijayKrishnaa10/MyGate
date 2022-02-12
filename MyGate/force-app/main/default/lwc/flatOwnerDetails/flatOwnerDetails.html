@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Details" icon-name="standard:client">
+        <template if:true={ownerList.data}>
+            <lightning-layout class="slds-var-m-around_medium">
+                <!-- c-contact-list-item-bubbling emits a bubbling event so a single listener on a containing element works -->
+              
+                <lightning-layout-item
+                    class="wide slds-var-m-right_x-large wide"
+                    onownerselect={handleOwnerSelect}>                
+                    <template for:each={ownerList.data} for:item="owner">
+                        <c-owner-list-item
+                            class="slds-show slds-is-relative"
+                            key={owner.Id}
+                            owner={owner}
+                        ></c-owner-list-item>
+                    </template>
+                </lightning-layout-item>
+                <lightning-layout-item class="slds-var-m-left_x-large">
+                    <template if:true={selectedOwner}>
+                        <img
+                            src={selectedOwner.Image__c}
+                            alt="Profile photo"
+                        />
+                        <p>Name : {selectedOwner.Name}</p>
+                        <p>Flat Number: {selectedOwner.Flat_Number__c}</p>
+                        <p>
+                            <lightning-formatted-phone
+                                value={selectedOwner.Phone_Number__c}
+                            ></lightning-formatted-phone>
+                        </p>
+                        <p>
+                            <lightning-formatted-email
+                                value={selectedOwner.Email__c}
+                            ></lightning-formatted-email>
+                        </p>
+                        <p class="slds-var-p-top_small">
+                            <lightning-button
+                            label="View All Details"
+                            icon-name="utility:chevronright"
+                            icon-position="right"
+                            onclick={handleAllDetail}
+                            ></lightning-button>
+                        </p>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+    </lightning-card>
+</template>

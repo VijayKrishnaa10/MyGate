@@ -1,0 +1,7 @@
+.slds-carousel__panel-action {
+    border: 2px solid red !important;
+}
+
+.slds-carousel__content{
+    padding: 0px !important;
+}
